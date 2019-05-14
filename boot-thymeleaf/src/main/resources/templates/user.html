@@ -3,9 +3,8 @@
 
 <head>
     <title>등록 폼</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    
-	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <th:block th:include="fragments/header"></th:block>
+	<script type="text/javascript" src="/js/main.js"></script>
    <!--  
     <link rel="stylesheet" type="text/css"
           href="webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>
@@ -13,18 +12,12 @@
 </head>
 <body>
 
-<nav class="navbar navbar-inverse">
-    <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Mkyong.com</a>
-        </div>
-    </div>
-</nav>
+<th:block th:include="fragments/nav"></th:block>
 
 <div class="container" style="min-height: 500px">
 
     <div class="starter-template">
-        <h1>Spring Boot AJAX Example</h1>
+        <h1>사용자 정보 조회</h1>
 
         <div id="feedback"></div>
 
@@ -37,10 +30,10 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row"><span th:text="${id}"></span></th>
-      <td><span th:text="${name}"></span></td>
-      <td><span th:text="${company}"></span></td>
+    <tr th:each="user : ${users}">
+      <td th:text="${user.id}">Id</td>
+      <td th:text="${user.name}">Id</td>
+      <td th:text="${user.company}">Id</td>
     </tr>
   </tbody>
 </table>
@@ -48,14 +41,7 @@
 
 </div>
 
-<div class="container">
-    <footer>
-        <p>
-            © <a href="http://www.mkyong.com">Mkyong.com</a> 2017
-        </p>
-    </footer>
-</div>
-
+<th:block th:include="fragments/footer"></th:block>
         
 <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"

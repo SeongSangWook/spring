@@ -44,17 +44,17 @@ public class HomeController {
 		return "user";
 	}
 	
-	@GetMapping("/welcome")
+	@GetMapping("/")
 	public String loadWelcome(Model model) {
 		return "welcome";
 	}
 	
-	@GetMapping("/register")
+	@GetMapping("/regform")
 	public String loadRegForm(Model model) {
 		return "regform";
 	}
 	
-	@PostMapping("/create")
+	@PostMapping("/users")
 	public String createUser(@Valid @RequestBody User user, Model model) {
 		userRepo.save(user);
 		model.addAttribute("users",userRepo.findAll());
