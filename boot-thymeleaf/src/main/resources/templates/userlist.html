@@ -24,10 +24,11 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row"><span th:text="${id}"></span></th>
-      <td><span th:text="${name}"></span></td>
-      <td><span th:text="${company}"></span></td>
+    <tr th:each="user : ${users}">
+      <td><a th:href="@{/users/{id}(id=${user.id})}">
+      <span th:text="${user.id}"></span></a></td>
+      <td><span th:text="${user.name}"></span></td>
+      <td><span th:text="${user.company}"></span></td>
     </tr>
   </tbody>
 </table>
