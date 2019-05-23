@@ -1,10 +1,12 @@
 package idu.cs.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +34,20 @@ public class HomeController {
 	@GetMapping("/users")
 	public String getAllUser(Model model) {
 		model.addAttribute("users",userRepo.findAll());
+		return "userlist";
+	}
+	
+	@GetMapping("/users/byname")
+	public String getUsersByName(@Param(value = "name") String name, Model model) {
+		List<User> users = userRepo.findByName(name);
+		model.addAttribute("users", users);
+		return "userlist";
+	}
+	
+	@GetMapping("/users/nameasc")
+	public String getUsersByNameAsc(@Param(value = "name") String name, Model model) {
+		List<User> users = userRepo.findByNameOrderByIdAsc(name);
+		model.addAttribute("users", users);
 		return "userlist";
 	}
 	
