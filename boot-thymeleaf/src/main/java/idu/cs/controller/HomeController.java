@@ -61,7 +61,7 @@ public class HomeController {
 			new ResourceNotFoundException("not found " + userId ));
 		model.addAttribute("user", user);
 		
-		return "user";
+		return "info";
 	}
 	
 	@PutMapping("/users/{id}")	
